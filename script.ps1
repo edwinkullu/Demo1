@@ -14,10 +14,10 @@ git commit -m "update new file"
 git push  -uf origin main
 
 
-docker build --tag webapp:ver.1.0 .
+docker build --tag webapp:$(date +%s) .
 
 
 az acr login --name MyRegistry05
 
-docker image push MyRegistry05.azurecr.io/webapp:ver.1.1
+
 
