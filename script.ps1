@@ -10,6 +10,5 @@ git add .
 
 git commit -m "update new file"
 
-git checkout main
 
-git push  origin main
+git push  -uf origin main
