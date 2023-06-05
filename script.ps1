@@ -14,4 +14,4 @@ git commit -m "update new file"
 git push  -uf origin main
 
 
-docker build --tag webapp:ver.1.0
+docker build --tag webapp:ver.1.0 .
