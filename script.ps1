@@ -15,3 +15,6 @@ git push  -uf origin main
 
 
 docker build --tag webapp:ver.1.0 .
+
+az login
+az acr login --name MyRegistry05
