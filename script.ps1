@@ -1,4 +1,5 @@
 git init
+git pull remote https://github.com/edwinkullu/Demo1.git main
 git remote add origin https://github.com/edwinkullu/Demo1.git
 git config --global user.name "edwin kullu"
 
