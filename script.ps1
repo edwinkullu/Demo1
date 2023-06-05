@@ -12,3 +12,6 @@ git commit -m "update new file"
 
 
 git push  -uf origin main
+
+
+docker .\compose.yml
