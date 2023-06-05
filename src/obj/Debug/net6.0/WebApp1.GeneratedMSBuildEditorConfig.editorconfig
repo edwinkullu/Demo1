@@ -8,37 +8,37 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebApp1
 build_property.RootNamespace = WebApp1
-build_property.ProjectDir = C:\Users\edwin.k\OneDrive - iWork Technologies Pvt. Ltd\Desktop\Demo\src\
+build_property.ProjectDir = c:\Users\edwin.k\OneDrive - iWork Technologies Pvt. Ltd\Desktop\Demo1\src\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\edwin.k\OneDrive - iWork Technologies Pvt. Ltd\Desktop\Demo\src
+build_property.MSBuildProjectDirectory = c:\Users\edwin.k\OneDrive - iWork Technologies Pvt. Ltd\Desktop\Demo1\src
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo/src/Pages/Error.cshtml]
+[c:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo1/src/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo/src/Pages/Index.cshtml]
+[c:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo1/src/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo/src/Pages/Privacy.cshtml]
+[c:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo1/src/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo/src/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo1/src/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo/src/Pages/_ViewImports.cshtml]
+[c:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo1/src/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo/src/Pages/_ViewStart.cshtml]
+[c:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo1/src/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo/src/Pages/Shared/_Layout.cshtml]
+[c:/Users/edwin.k/OneDrive - iWork Technologies Pvt. Ltd/Desktop/Demo1/src/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-k18sh7oufj
