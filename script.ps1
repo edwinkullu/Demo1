@@ -34,4 +34,6 @@ az acr login -n azureregistery000
 
 docker push azureregistery000.azurecr.io/webapp:v1.$i
 
+az acr repository list --name azureregistery000 --output table
 
+Disconnect-AzAccount -Username 'edwinkullu94@gmail.com'
