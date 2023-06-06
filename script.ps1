@@ -23,9 +23,9 @@ $i = Get-Date -Format "MM.dd.yyyy"
 
 docker build . --file Dockerfile --tag webapp:v1.$i
 
-#az login
+az login
 
-#az acr login --name MyRegistry05
+az acr login 
 
 
 
