@@ -15,7 +15,7 @@ git push  -uf origin main
 
 
 
-$i = Get-Date "MM.dd.yy"
+$i = Get-Date -Format "MM.dd.yyyy"
 
 
 # Build the Docker image with the updated version number
