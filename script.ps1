@@ -15,7 +15,7 @@ git push  -uf origin main
 
 
 
-$i = Get-Date -Format "MM.dd.yyyy"
+$i = Get-Date -Format "MM.dd.yyyy HH:mm:ss"
 
 
 # Build the Docker image with the updated version number
@@ -36,4 +36,3 @@ docker push azureregistery000.azurecr.io/webapp:v1.$i
 
 az acr repository list --name azureregistery000 --output table
 
-az logout --username "edwinkullu94@gmail.com"
