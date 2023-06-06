@@ -25,7 +25,7 @@ docker build . --file Dockerfile --tag webapp:v1.$i
 
 az login
 
-az acr login 
+az acr login -n azureregistery000
 
-
+docker tag webapp:v1.$i azureregistery000.azurecr.io/webapp:latest
 
