@@ -13,8 +13,14 @@ git commit -m "update new file"
 
 git push  -uf origin main
 
+# Generate a timestamp with the desired format
+timestamp=$(date +%Y%m%d%H%M%S)
+version="1.0.${timestamp}"
 
-docker build --tag webapp:$(date +%s) .
+# Build the Docker image with the updated version number
+
+
+docker build . --file Dockerfile --tag webapp:${version}
 
 
 az acr login --name MyRegistry05
