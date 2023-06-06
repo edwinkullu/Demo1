@@ -15,7 +15,7 @@ git push  -uf origin main
 
 # Generate a timestamp with the desired format
 
-version="1.0.${Get-Date}"
+version = Get-Date -Format "MM.dd.yyyy HH:mm:ss"
 
 # Build the Docker image with the updated version number
 
