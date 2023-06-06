@@ -21,17 +21,17 @@ $i = Get-Date -Format "MM.dd.yyyy"
 # Build the Docker image with the updated version number
 
 
-docker build . --file Dockerfile --tag webapp:v1.$i
+docker build . --file Dockerfile --tag webapp:latest
 
-docker tag webapp:v1.$i azureregistery000.azurecr.io/webapp:latest
+docker tag webapp:latest azureregistery000.azurecr.io/webapp:v1.$i
 
 
 az login 
 
 az acr login -n azureregistery000
 
-docker tag webapp:v1.$i azureregistery000.azurecr.io/webapp:latest
 
-docker push azureregistery000.azurecr.io/webapp:v1.0
+
+docker push azureregistery000.azurecr.io/webapp:v1.$i
 
 
