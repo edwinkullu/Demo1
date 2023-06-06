@@ -22,9 +22,9 @@ $version = Get-Date -Format "MM.dd.yy hh:mm"
 
 docker build . --file Dockerfile --tag webapp:ver1.$version
 
-docker tag webapp:1.$version edwin/webapp:latest
+docker tag webapp:ver1.$version edwin/webapp:latest
 
-docker tag edwin/webapp:latest webapp:version1.0
+#docker tag edwin/webapp:latest webapp:version1.0
 
 #az acr login --name MyRegistry05
 
