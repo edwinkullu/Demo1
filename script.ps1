@@ -23,9 +23,14 @@ $i = Get-Date -Format "MM.dd.yyyy"
 
 docker build . --file Dockerfile --tag webapp:v1.$i
 
+docker tag webapp:v1.$i azureregistery000.azurecr.io/webapp:latest
+
+
 az login
 
 az acr login -n azureregistery000
 
 docker tag webapp:v1.$i azureregistery000.azurecr.io/webapp:latest
+
+
 
