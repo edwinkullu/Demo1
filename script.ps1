@@ -24,6 +24,8 @@ docker build . --file Dockerfile --tag webapp:1.$version
 
 docker tag webapp:1.$version edwin/webapp:latest
 
+docker tag edwin/webapp:latest WebApp:version1.0
+
 #az acr login --name MyRegistry05
 
 
