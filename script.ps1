@@ -19,8 +19,8 @@ $number++
 
 # Build the Docker image with the updated version number
 
-
-docker build . --file Dockerfile --tag webapp:ver1.$number
+docker build . --file Dockerfile --tag webapp:latest
+docker tag webapp:latest webapp:ver1.$number
 
 #az login
 
