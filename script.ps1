@@ -36,4 +36,4 @@ docker push azureregistery000.azurecr.io/webapp:v1.$i
 
 az acr repository list --name azureregistery000 --output table
 
-az logout -Username 'edwinkullu94@gmail.com'
+az logout --username "edwinkullu94@gmail.com"
