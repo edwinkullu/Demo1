@@ -32,5 +32,6 @@ az acr login -n azureregistery000
 
 docker tag webapp:v1.$i azureregistery000.azurecr.io/webapp:latest
 
+docker push azureregistery000.azurecr.io/webapp:v1.0
 
 
