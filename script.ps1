@@ -26,7 +26,7 @@ docker build . --file Dockerfile --tag webapp:v1.$i
 docker tag webapp:v1.$i azureregistery000.azurecr.io/webapp:latest
 
 
-az login --service-principal -u 0d0019e5-9c82-4a1e-be5e-6ca782ecf637 -p zLW8Q~Ki-MpLbotf1wFFI9qcrMnvRklZHPUsgbvR --tenant 4ec9e9d4-1dad-427f-adf9-e774dca413d1
+az login 
 
 az acr login -n azureregistery000
 
