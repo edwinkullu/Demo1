@@ -15,16 +15,14 @@ git push  -uf origin main
 
 # Generate a timestamp with the desired format
 
-$version =  Get-Date -Format "dd/MM/yyyy HH:mm:ss"  
+$number++
 
 # Build the Docker image with the updated version number
 
 
-docker build . --file Dockerfile --tag webapp:ver1.$version
+docker build . --file Dockerfile --tag webapp:ver 1.$number
 
-docker tag webapp:ver1.$version edwin/webapp:latest
-
-#docker tag edwin/webapp:latest webapp:version1.0
+#az login
 
 #az acr login --name MyRegistry05
 
