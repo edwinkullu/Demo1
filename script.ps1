@@ -14,8 +14,8 @@ git commit -m "update new file"
 git push  -uf origin main
 
 # Generate a timestamp with the desired format
-timestamp=$(date +%Y%m%d%H%M%S)
-version="1.0.${timestamp}"
+
+version="1.0.${Get-Date}"
 
 # Build the Docker image with the updated version number
 
