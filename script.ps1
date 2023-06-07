@@ -21,12 +21,12 @@ $version = Get-Date -Format g
 
 docker build --tag azureregistery000.azurecr.io/webapp:v1.$version .
 
-az login 
+#az login 
 
-az acr login -n azureregistery000
+#az acr login -n azureregistery000
 
 
-docker push azureregistery000.azurecr.io/webapp:v1.$version
+#docker push azureregistery000.azurecr.io/webapp:v1.$version
 
-az acr repository list --name azureregistery000 --output table
+#az acr repository list --name azureregistery000 --output table
 
