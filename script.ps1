@@ -29,7 +29,7 @@ az login
 az acr login -n azureregistery000
 
 
-docker push webapp:$v
+docker push azureregistery000.azurecr.io/webapp:$v
 
 az acr repository list --name azureregistery000 --output table
 
