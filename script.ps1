@@ -20,7 +20,7 @@ git push  -uf origin main
 
 #docker build --tag webapp1:v1.$i .
 
-docker build . --file Dockerfile --tag webapp:v1.0
+docker build . --file Dockerfile --tag webapp:v1.1
 
 #docker tag webapp:latest azureregistery000.azurecr.io/webapp:v1.$i
 
