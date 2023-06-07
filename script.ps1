@@ -21,7 +21,7 @@ $version = Get-Date -Format "dd-MM-yyyy HH:mm:ss"
 # Build the Docker image with the updated version number
 
 
-docker build --tag azureregistery000.azurecr.io/webapp:v1.$version .
+docker build --tag webapp:v1.$version .
 
 #az login 
 
