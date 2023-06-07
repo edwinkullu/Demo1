@@ -13,7 +13,7 @@ git commit -m "update new file"
 
 git push  -uf origin main
 
-$i = Get-Date -Format "dd-MM-yyyy HH:mm "
+$i = Get-Date -Format "dd-MM-yyyy HH:mm"
 
 
 # Build the Docker image with the updated version number
