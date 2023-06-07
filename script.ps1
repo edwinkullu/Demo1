@@ -13,7 +13,7 @@ git commit -m "update new file"
 
 git push  -uf origin main
 
-$i = Get-Date -Format "MM.dd.yyyy HH.mm.ss"
+$i = Get-Date -Format "yyyyMMdd_hhmmss"
 
 echo $i
 # Build the Docker image with the updated version number
@@ -29,7 +29,7 @@ az login --service-principal -u "85f4c690-8f79-48bb-a917-1647925d614e" -p "Lii8Q
 az acr login -n azureregistery000
 
 
-docker push webapp:v1.1
+docker push webapp:$i
 
 az acr repository list --name azureregistery000 --output table
 
