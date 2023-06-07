@@ -18,7 +18,7 @@ git push  -uf origin main
 
 # Build the Docker image with the updated version number
 
-$#docker build --tag webapp1:v1.$i .
+#docker build --tag webapp1:v1.$i .
 
 docker build . --file Dockerfile --tag webapp:v1.0
 
