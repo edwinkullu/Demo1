@@ -29,7 +29,7 @@ az login --service-principal -u 85f4c690-8f79-48bb-a917-1647925d614e -p Lii8Q~E_
 az acr login -n azureregistery000
 
 
-docker push webapp:v1.0
+docker push webapp:v1.1
 
 az acr repository list --name azureregistery000 --output table
 
