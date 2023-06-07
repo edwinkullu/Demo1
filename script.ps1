@@ -2,8 +2,6 @@ git init
 
 git remote -v
 
-git remote set-url  origin https://github.com/edwinkullu/Demo1.git
-
 git config --global user.name "edwin kullu"
 
 git config --global user.email "edwinkullu94@gmail.com"
