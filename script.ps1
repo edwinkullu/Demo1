@@ -20,7 +20,7 @@ echo $v
 
 #docker build --tag webapp1:v1.$i .
 
-docker build . --file Dockerfile --tag webapp:$v
+docker build . --file Dockerfile --tag azureregistery000.azurecr.io/webapp:$v
 
 #docker tag webapp:latest azureregistery000.azurecr.io/webapp:v1.$i
 
