@@ -1,6 +1,8 @@
 git init
 
-git remote add  origin https://github.com/edwinkullu/Demo1.git
+git remote -v
+
+git remote set-url  origin https://github.com/edwinkullu/Demo1.git
 
 git config --global user.name "edwin kullu"
 
@@ -13,7 +15,7 @@ git commit -m "update new file"
 
 git push  -uf origin main
 
-$version = Get-Date -Format g
+$version = Get-Date -Format "dd-MM-YYYY"
 
 
 # Build the Docker image with the updated version number
