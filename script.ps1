@@ -23,9 +23,10 @@ echo $v
 docker build . --file Dockerfile --tag azureregistery000.azurecr.io/webapp:$v
 
 #docker tag webapp:latest azureregistery000.azurecr.io/webapp:v1.$i
+az login
 
 az login --service-principal -u "0d0019e5-9c82-4a1e-be5e-6ca782ecf637" -p "Zbs8Q~J0lXYJZbjgvqK4uZwb~zxaxAZgg3O7UdvX" --tenant "4ec9e9d4-1dad-427f-adf9-e774dca413d1"
-#az login
+
 az acr login -n azureregistery000
 
 
