@@ -18,7 +18,7 @@ $i = Get-Date -Format "dd-MM-yyyy HH:mm"
 
 # Build the Docker image with the updated version number
 
-docker build -tag app/webapp1:v1.$i .
+docker build --tag app/webapp1:v1.$i .
 
 #az login 
 
