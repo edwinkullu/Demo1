@@ -20,9 +20,9 @@ $i = Get-Date -Format "MM.dd.yyyy HH:mm:ss"
 
 $#docker build --tag webapp1:v1.$i .
 
-docker build . --file Dockerfile --tag webapp:latest
+docker build . --file Dockerfile --tag webapp:v1.$i
 
-docker tag webapp:latest azureregistery000.azurecr.io/webapp:v1.$i
+#docker tag webapp:latest azureregistery000.azurecr.io/webapp:v1.$i
 
 
 #az login 
