@@ -13,13 +13,13 @@ git commit -m "update new file"
 
 git push  -uf origin main
 
-$version = Get-Date -Format "MM.dd.yyyy HH:mm:ss"
+$version = Get-Date -Format g
 
 
 # Build the Docker image with the updated version number
 
 
-docker build . --file Dockerfile --tag azureregistery000.azurecr.io/webapp:v1.$version
+docker build --tag azureregistery000.azurecr.io/webapp:v1.$version .
 
 
 
