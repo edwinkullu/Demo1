@@ -13,9 +13,9 @@ git commit -m "update new file"
 
 git push  -uf origin main
 
-$v = Get-Date -Format "yyyyMMddhhmmss"
+$v = Get-Date -Format "yyyyMMdd_hhmmss"
 
-echo $v
+Write-Output $v
 # Build the Docker image with the updated version number
 
 #docker build --tag webapp1:v1.$i .
