@@ -20,17 +20,17 @@ Write-Output $v
 
 #docker build --tag webapp1:v1.$i .
 
-docker build . --file Dockerfile --tag containerregistry025.azurecr.io/webapp:$v
+docker build . --file Dockerfile --tag azureregistery02.azurecr.io/webapp:$v
 
-#docker tag webapp:latest containerregistry025.azurecr.io/webapp:v1.$i
+#docker tag webapp:latest azureregistery02.azurecr.io/webapp:v1.$i
 #az login
 
 az login --service-principal -u{39c95471-bcfc-4bdc-b53d-eef346ab1a89} -p{YLx8Q~uJzzU4LUrX2G0hQsHZRVUv~f4lG.5.NcEt} --tenant{4ec9e9d4-1dad-427f-adf9-e774dca413d1}
 
-az acr login -n containerregistry025
+az acr login -n azureregistery02
 
 
-docker push containerregistry025.azurecr.io/webapp:$v
+docker push azureregistery02.azurecr.io/webapp:$v
 
-az acr repository list --name containerregistry025 --output table
+az acr repository list --name azureregistery02 --output table
 
