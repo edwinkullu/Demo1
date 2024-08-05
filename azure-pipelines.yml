@@ -1,19 +1,88 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
+############# Azure DevOps Test Pipeline #################
 trigger:
-- main
+  branches:
+    include:
+      - 'refs/heads/ver_*'
+      - devops
+  paths:
+    exclude:
+      - .gitignore
+      - README.md
+      - docs/*
+      - cert/*
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+- stage: DevWest
+  displayName: 'Deploy to Dev West'
+  jobs:
+  - job: DevJobWest
+    displayName: 'Deploy to Dev West Job'
+    steps:
+    - script: |
+        echo Deploying to Dev West environment...
+      displayName: 'Deploy script for Dev West'
+      
+- stage: DevEast
+  displayName: 'Deploy to Dev East'
+  jobs:
+  - job: DevJobEast
+    displayName: 'Deploy to Dev East Job'
+    steps:
+    - script: |
+        echo Deploying to Dev East environment...
+      displayName: 'Deploy script for Dev East'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- stage: QAWest
+  displayName: 'Deploy to QA West'
+  dependsOn: DevWest
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/ver_*'), eq(variables['ManualTrigger'], 'true'))
+  jobs:
+  - job: QAJobWest
+    displayName: 'Deploy to QA West Job'
+    steps:
+    - script: |
+        echo Deploying to QA West environment...
+        # Add your deployment script or commands here
+      displayName: 'Deploy script for QA West'
+      
+- stage: QAEast
+  displayName: 'Deploy to QA East'
+  dependsOn: DevEast
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/ver_*'), eq(variables['ManualTrigger'], 'true'))
+  jobs:
+  - job: QAJobEast
+    displayName: 'Deploy to QA East Job'
+    steps:
+    - script: |
+        echo Deploying to QA East environment...
+        # Add your deployment script or commands here
+      displayName: 'Deploy script for QA East'
+
+- stage: UAT
+  displayName: 'Deploy to UAT'
+  dependsOn: [QAWest, QAEast]
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/ver_*'), eq(variables['ManualTrigger'], 'true'))
+  jobs:
+  - job: UATJob
+    displayName: 'Deploy to UAT Job'
+    steps:
+    - script: |
+        echo Deploying to UAT environment...
+        # Add your deployment script or commands here
+      displayName: 'Deploy script for UAT'
+
+- stage: Prod
+  displayName: 'Deploy to Prod'
+  dependsOn: UAT
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/ver_*'), eq(variables['ManualTrigger'], 'true'))
+  jobs:
+  - job: ProdJob
+    displayName: 'Deploy to Prod Job'
+    steps:
+    - script: |
+        echo Deploying to Prod environment...
+        # Add your deployment script or commands here
+      displayName: 'Deploy script for Prod'
