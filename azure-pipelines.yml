@@ -1,92 +1,100 @@
 trigger:
   branches:
     include:
-      - main  # Trigger pipeline on changes to the main branch
+      - pipelines-poc
+      - ver_*
+      - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  imageName: 'Webapp'  # Update with your app's name
+  containerRegistry: 'yamlbasedrepo.azurecr.io'  # Update with your ACR name
+  repositoryName: 'Demo'  # Update with your ACR repository name
+
+resources:
+  repositories:
+    - repository: Webapp
+      type: git
+      name: edwinkullu/Webapp  # Update with your organization/project/repository name
+      ref: main  # Or specify a branch/tag to use
 
 stages:
-- stage: BuildAndPushImages
-  displayName: 'Build and Push Docker Images'
-  jobs:
-  - job: BuildAndPush
-    displayName: 'Build and Push Docker Images for All Services'
-    pool:
-      vmImage: 'ubuntu-latest'
+  - stage: Build
+    displayName: "Build Stage"
+    jobs:
+      - job: Build
+        displayName: "Build Job"
+        steps:
+          - checkout: self  # Checkout the repository where the YAML resides
 
-    steps:
-    - checkout: self
+          - checkout: Webapp  # Checkout the Webapp repository
 
-    - task: Docker@2
-      displayName: 'Login to Docker Hub'
-      inputs:
-        command: login
-        containerRegistry: 'YourDockerHubConnection'  # Set up Docker Hub service connection in Azure DevOps
+          - task: DockerInstaller@0
+            displayName: 'Install Docker'
 
-    - ${{ each service in parameters.services }}:
-      - script: |
-          echo "Building and pushing Docker image for ${{ service.name }}..."
-          docker build -t ${{ parameters.dockerRegistry }}/${{ service.name }}:$(Build.BuildId) ${{ service.path }}
-          docker push ${{ parameters.dockerRegistry }}/${{ service.name }}:$(Build.BuildId)
-        displayName: 'Build and Push ${{ service.name }}'
+          - script: |
+              echo "Building Docker image..."
+              docker build -t $(containerRegistry)/$(repositoryName):$(Build.BuildId) Webapp/
+            displayName: 'Build Docker Image'
 
-- stage: DeployToAKS
-  displayName: 'Deploy to AKS'
-  dependsOn: BuildAndPushImages
-  jobs:
-  - deployment: DeployServices
-    displayName: 'Deploy All Services to AKS'
-    environment: 'Dev'  # Define your environment in Azure DevOps
-    pool:
-      vmImage: 'ubuntu-latest'
+          - script: |
+              echo "Logging into Azure Container Registry..."
+              echo $(ACR_PASSWORD) | docker login $(containerRegistry) -u $(ACR_USERNAME) --password-stdin
+            displayName: 'Login to ACR'
 
-    strategy:
-      runOnce:
-        deploy:
-          steps:
+          - script: |
+              echo "Pushing Docker image to Azure Container Registry..."
+              docker push $(containerRegistry)/$(repositoryName):$(Build.BuildId)
+            displayName: 'Push Docker Image to ACR'
 
-          - task: Kubernetes@1
-            displayName: 'Set AKS context'
-            inputs:
-              connectionType: 'Azure Resource Manager'
-              azureSubscriptionEndpoint: 'YourAzureSubscriptionConnection'  # Azure subscription service connection
-              azureResourceGroup: 'YourResourceGroup'
-              kubernetesCluster: 'YourAKSClusterName'
-              namespace: 'default'  # or another namespace if required
-              command: 'get'
-              arguments: 'pods'
+  - stage: Dev
+    displayName: "Deploy to Dev"
+    dependsOn: Build
+    jobs:
+      - deployment: DeployDev
+        displayName: "Deploy to Dev Environment"
+        environment: 'Dev'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - script: |
+                    echo "Deploying to Dev Environment..."
+                    kubectl set image deployment/your-deployment-name your-container-name=$(containerRegistry)/$(repositoryName):$(Build.BuildId) --namespace=dev
+                  displayName: 'Deploy Docker Image to Dev'
 
-          - ${{ each service in parameters.services }}:
-            - task: KubernetesManifest@0
-              displayName: 'Deploy ${{ service.name }} to AKS'
-              inputs:
-                action: 'deploy'
-                kubernetesServiceConnection: 'YourKubernetesServiceConnection'  # Kubernetes service connection
-                namespace: 'default'
-                manifests: |
-                  ${{ service.path }}/deployment.yaml
-                containers: |
-                  ${{ parameters.dockerRegistry }}/${{ service.name }}:$(Build.BuildId)
+  - stage: QA
+    displayName: "Deploy to QA"
+    dependsOn: Dev
+    condition: succeeded()
+    jobs:
+      - deployment: DeployQA
+        displayName: "Deploy to QA Environment"
+        environment: 'QA'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - script: |
+                    echo "Deploying to QA Environment..."
+                    kubectl set image deployment/your-deployment-name your-container-name=$(containerRegistry)/$(repositoryName):$(Build.BuildId) --namespace=qa
+                  displayName: 'Deploy Docker Image to QA'
 
-# parameters:
-#   services:
-#     - name: 'service1'
-#       path: 'service1'
-#     - name: 'service2'
-#       path: 'service2'
-#     - name: 'service3'
-#       path: 'service3'
-#     - name: 'service4'
-#       path: 'service4'
-#     - name: 'service5'
-#       path: 'service5'
-#     - name: 'service6'
-#       path: 'service6'
-#     - name: 'service7'
-#       path: 'service7'
-#     - name: 'service8'
-#       path: 'service8'
-#     - name: 'service9'
-#       path: 'service9'
-#     - name: 'service10'
-#       path: 'service10'
-
-#   dockerRegistry: 'your-docker-registry/namespace'
+  - stage: UAT
+    displayName: "Deploy to UAT"
+    dependsOn: QA
+    condition: succeeded()
+    jobs:
+      - deployment: DeployUAT
+        displayName: "Deploy to UAT Environment"
+        environment: 'UAT'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - script: |
+                    echo "Deploying to UAT Environment..."
+                    kubectl set image deployment/your-deployment-name your-container-name=$(containerRegistry)/$(repositoryName):$(Build.BuildId) --namespace=uat
+                  displayName: 'Deploy Docker Image to UAT'
